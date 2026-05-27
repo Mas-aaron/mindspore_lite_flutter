@@ -1,0 +1,55 @@
+group 'com.agrichain.mindspore_lite_flutter'
+version '1.0'
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.3.0'
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.22'
+    }
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+    namespace 'com.agrichain.mindspore_lite_flutter'
+    compileSdk 34
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    defaultConfig {
+        minSdkVersion 21
+        // ARM64 only — MindSpore Lite 1.7.0 supports arm64-v8a
+        ndk {
+            abiFilters 'arm64-v8a'
+        }
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    dependencies {
+        // MindSpore Lite 1.7.0 full AAR (bundled in libs/)
+        implementation(name: 'mindspore-lite-full-1.7.0', ext: 'aar')
+        implementation 'com.google.code.gson:gson:2.10.1'
+    }
+}
+
+// Make the bundled AAR visible to the plugin build
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}

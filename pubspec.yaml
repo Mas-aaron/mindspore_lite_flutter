@@ -1,0 +1,36 @@
+name: mindspore_lite_flutter
+description: >-
+  Flutter plugin for on-device AI inference using Huawei MindSpore Lite 1.7.0.
+  Image classification on Android ARM64. No internet required.
+version: 1.0.4
+homepage: https://github.com/Mas-aaron/mindspore_lite_flutter
+repository: https://github.com/Mas-aaron/mindspore_lite_flutter
+issue_tracker: https://github.com/Mas-aaron/mindspore_lite_flutter/issues
+
+topics:
+  - machine-learning
+  - ai
+  - image-classification
+  - mindspore
+  - on-device-inference
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.10.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  plugin_platform_interface: ^2.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: com.agrichain.mindspore_lite_flutter
+        pluginClass: MindsporeLiteFlutterPlugin
